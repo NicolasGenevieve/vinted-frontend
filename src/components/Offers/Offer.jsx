@@ -1,14 +1,10 @@
 import "./Offer.css";
+import User from "../User/User";
 
 const Offer = () => {
   return (
     <div className="offerWrap">
-      <div className="user">
-        <div className="userPhoto">
-          <img src="../../src/assets/favicon.png" />
-        </div>
-        <div className="userName">Jessy99</div>
-      </div>
+      <User />
       <div className="offerPicture">
         <img src="../../src/assets/offer-picture.png" />
       </div>

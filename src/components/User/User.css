@@ -1,0 +1,32 @@
+.user {
+  /* border: solid 3px green; */
+  height: 40px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.userPhoto {
+  /* border: solid 3px green; */
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.userPhoto > img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.userName {
+  /* border: solid 3px green; */
+  height: 35px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #626e80;
+}

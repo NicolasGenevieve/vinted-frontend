@@ -10,6 +10,6 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: orange 3px solid;
+  /*  border: orange 3px solid; */
   padding: 0 20px;
 }
