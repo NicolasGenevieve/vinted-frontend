@@ -1,0 +1,10 @@
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+strong {
+  font-weight: bold;
+}

@@ -1,0 +1,27 @@
+.small {
+  background-color: #007782;
+  border: solid 1px #007782;
+  font-size: 13px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.small:hover {
+  cursor: pointer;
+}
+
+.medium {
+  background-color: #007782;
+  border: solid 1px #007782;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.medium:hover {
+  cursor: pointer;
+}

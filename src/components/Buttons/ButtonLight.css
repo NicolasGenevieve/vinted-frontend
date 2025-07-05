@@ -1,0 +1,13 @@
+.buttonLight {
+  background-color: white;
+  border: solid #007782 1px;
+  font-size: 13px;
+  color: #007782;
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.buttonLight:hover {
+  cursor: pointer;
+}
