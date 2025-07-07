@@ -1,19 +1,34 @@
 import "./Offer.css";
 import User from "../User/User";
 
-const Offer = () => {
+const Offer = ({ product }) => {
   return (
-    <div className="offerWrap">
-      <User />
-      <div className="offerPicture">
-        <img src="../../src/assets/offer-picture.png" />
-      </div>
-      <div className="offerPrice">5.90 €</div>
-      <div className="offerDesc">
-        <span>6 ANS / 110-116 CM</span>
-        <span>H&M</span>
-      </div>
-    </div>
+    <>
+      {product.map((offer) => (
+        <div key={offer._id} className="offerWrap">
+          <User user={offer.owner} />
+          <div className="offerPicture">
+            <img src={offer.product_image.url} />
+          </div>
+          <div className="offerPrice">{offer.product_price.toFixed(2)} €</div>
+
+          <div className="offerDesc">
+            {offer.product_details.map((item, index) => {
+              if (item.TAILLE || item.MARQUE) {
+                return (
+                  <div key={index}>
+                    {item.TAILLE && <span>{item.TAILLE}</span>}
+                    {item.MARQUE && <span>{item.MARQUE}</span>}
+                  </div>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
+        </div>
+      ))}
+    </>
   );
 };
 

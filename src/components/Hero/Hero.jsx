@@ -11,7 +11,7 @@ const Hero = () => {
           <div className="container">
             <div className="hero">
               <h1>Prêt à faire du tri dans tes placards ?</h1>
-              <ButtonGreen title="Commence à vendre" size="medium" />
+              <ButtonGreen title="Commencer à vendre" size="medium" />
             </div>
           </div>
         </div>

@@ -1,13 +1,15 @@
 import "./User.css";
 
-const User = () => {
-  return (
+const User = ({ user }) => {
+  return user ? (
     <div className="user">
       <div className="userPhoto">
-        <img src="../../src/assets/favicon.png" />
+        <img src={user.account.avatar.url} />
       </div>
-      <div className="userName">Jessy99</div>
+      <div className="userName">{user.account.username}</div>
     </div>
+  ) : (
+    <></>
   );
 };
 

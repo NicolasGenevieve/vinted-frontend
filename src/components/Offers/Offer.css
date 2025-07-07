@@ -1,41 +1,11 @@
 .offerWrap {
-  height: 480px;
   flex: 0 0 20%;
   /* border: grey solid 3px; */
   flex-shrink: 0;
 }
 
-.user {
-  /* border: solid 3px green; */
-  height: 40px;
-  padding-left: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 10px;
-}
-
-.userPhoto {
-  /* border: solid 3px green; */
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
-
-.userPhoto > img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-}
-
-.userName {
-  /* border: solid 3px green; */
-  height: 35px;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  color: #626e80;
+.offerWrap:hover {
+  cursor: pointer;
 }
 
 .offerPicture {
@@ -52,7 +22,8 @@
 
 .offerPrice {
   /* border: solid 3px green;*/
-  height: 35px;
+  padding-top: 15px;
+  padding-left: 20px;
   width: 100%;
   padding-left: 10px;
   font-size: 16px;
@@ -62,12 +33,11 @@
 
 .offerDesc {
   /* border: solid 3px green; */
-  height: 40px;
   width: 100%;
-  padding-left: 10px;
   font-size: 12px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   color: #9cacc4;
+  padding: 15px 10px;
 }
