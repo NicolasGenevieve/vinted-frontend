@@ -5,10 +5,13 @@ import { useState, useEffect } from "react";
 
 //Pages :
 import Home from "./pages/Home";
+import Product from "./pages/Product";
+import All from "./pages/All.jsx";
 
 //Components :
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
   const [data, setData] = useState();
@@ -34,9 +37,12 @@ function App() {
     <p>Loading...</p>
   ) : (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home product={data.offers} />} />
+        <Route path="/offer/:id" element={<Product product={data.offers} />} />
+        <Route path="*" element={<All />} />
       </Routes>
       <Footer />
     </Router>
