@@ -1,6 +1,6 @@
 import "./Hero.css";
-import hero from "../../assets/hero.jpg";
-import ButtonGreen from "../Buttons/ButtonGreen";
+import hero from "../../../assets/hero.jpg";
+import ButtonGreen from "../../Tools/Buttons/ButtonGreen.jsx";
 
 const Hero = () => {
   return (

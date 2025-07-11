@@ -52,7 +52,6 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
-  width: 50%;
   color: #626e80;
   font-size: 15px;
 }

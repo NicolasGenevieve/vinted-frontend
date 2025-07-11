@@ -1,70 +1,72 @@
-import "./Product.css";
-import User from "../components/User/User";
-import ButtonGreen from "../components/Buttons/ButtonGreen";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../components/Product/Product.css";
+import User from "../components/Tools/User/User";
+import ButtonGreen from "../components/Tools/Buttons/ButtonGreen";
 import { useParams } from "react-router-dom";
+import Loader from "../components/Tools/Loader/Loader";
+import displayPrice from "../utils/displayPrice";
 
-const Product = ({ product }) => {
+const Product = () => {
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
   const { id } = useParams();
-  console.log(id);
 
-  const itemFound = product.find((offer) => id === offer._id);
-  console.log({ Trouvé: itemFound });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+        );
+        // console.log(response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="productWrap">
       <div className="productWrap2">
         <div className="container">
-          {itemFound ? (
-            <div className="product">
-              <div className="productPicture">
-                <img src={itemFound.product_image.secure_url} />
-              </div>
-
-              <div className="productDescription">
-                <span className="price">
-                  {itemFound.product_price.toFixed(2)} €
-                </span>
-                <div className="productDetailWrap">
-                  <div className="productDetailCriteria">
-                    {itemFound.product_details.map((item, index) => (
-                      <div key={index}>
-                        {item.MARQUE ? <span>MARQUE</span> : null}
-                        {item.TAILLE ? <span>TAILLE</span> : null}
-                        {item.ÉTAT ? <span>ÉTAT</span> : null}
-                        {item.COULEUR ? <span>COULEUR</span> : null}
-                        {item.EMPLACEMENT ? <span>EMPLACEMENT</span> : null}
-                        {item["MODES DE PAIEMENT"] ? (
-                          <span>MODES DE PAIEMENT</span>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="productDetail">
-                    {itemFound.product_details.map((item, index) => (
-                      <div key={index}>
-                        {item.MARQUE ? <span>{item.MARQUE}</span> : null}
-                        {item.TAILLE ? <span>{item.TAILLE}</span> : null}
-                        {item.ÉTAT ? <span>{item.ÉTAT}</span> : null}
-                        {item.COULEUR ? <span>{item.COULEUR}</span> : null}
-                        {item.EMPLACEMENT ? (
-                          <span>{item.EMPLACEMENT}</span>
-                        ) : null}
-                        {item["MODES DE PAIEMENT"] ? (
-                          <span>{item["MODES DE PAIEMENT"]}</span>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <h1>{itemFound.product_name}</h1>
-                <p className="description">{itemFound.product_description}</p>
-                <User />
-                <ButtonGreen title="Acheter" size="medium" />
-              </div>
+          <div className="product">
+            <div className="productPicture">
+              <img
+                src={data.product_image.secure_url}
+                alt={data.product_name}
+              />
             </div>
-          ) : (
-            <span>Cet article n'existe plus</span>
-          )}
+
+            <div className="productDescription">
+              <span className="price">{displayPrice(data.product_price)}</span>
+              <div className="productDetailWrap">
+                <div className="productDetailCriteria">
+                  {data.product_details.map((detail, index) => {
+                    const keyName = Object.keys(detail)[0];
+                    return (
+                      <div key={index}>
+                        <span>
+                          {keyName} : {detail[keyName]}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <h1>{data.product_name}</h1>
+              <p className="description">{data.product_description}</p>
+              <User user={data.owner} />
+              <ButtonGreen title="Acheter" size="medium" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

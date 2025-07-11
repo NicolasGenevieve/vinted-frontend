@@ -1,8 +1,8 @@
 import "./Header.css";
 import Brand from "./Brand.jsx";
 import { IoSearch } from "react-icons/io5";
-import ButtonGreen from "../Buttons/ButtonGreen.jsx";
-import ButtonLight from "../Buttons/ButtonLight.jsx";
+import ButtonGreen from "../Tools/Buttons/ButtonGreen.jsx";
+import ButtonLight from "../Tools/Buttons/ButtonLight.jsx";
 
 const Header = () => {
   return (

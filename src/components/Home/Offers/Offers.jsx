@@ -1,12 +1,12 @@
 import "./Offers.css";
 import Offer from "./Offer";
 
-const Offers = ({ product }) => {
+const Offers = () => {
   return (
     <section className="offersWrap">
       <div className="container">
         <div className="offersWrap2">
-          <Offer product={product} />
+          <Offer />
         </div>
       </div>
     </section>
