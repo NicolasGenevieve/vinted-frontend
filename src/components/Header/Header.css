@@ -34,7 +34,7 @@ header {
   border-top-left-radius: 10px;
 }
 
-input {
+.inputSearch {
   /* border: solid grey 3px;*/
   border: none;
   background-color: #edf2f2;
@@ -50,7 +50,7 @@ input {
   border-top-right-radius: 10px;
 }
 
-input:focus {
+.inputSearch:focus {
   outline: none;
 }
 
