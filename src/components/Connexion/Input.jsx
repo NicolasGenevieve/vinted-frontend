@@ -1,13 +1,15 @@
 import "./Input.css";
 
-const Input = ({ id, type, placeholder, name }) => {
+const Input = ({ id, type, placeholder, name, className, value, onChange }) => {
   return (
     <input
       id={id}
-      className="inputConnect"
+      className={className}
       type={type}
       placeholder={placeholder}
       name={name}
+      value={value}
+      onChange={onChange}
     />
   );
 };

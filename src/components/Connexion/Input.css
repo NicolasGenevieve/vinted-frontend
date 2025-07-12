@@ -21,3 +21,8 @@ form {
 .inputConnect:focus {
   outline: none;
 }
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+}

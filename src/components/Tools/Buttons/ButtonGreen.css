@@ -20,8 +20,26 @@
   font-weight: bold;
   padding: 10px;
   border-radius: 5px;
+  width: 100%;
 }
 
 .medium:hover {
+  cursor: pointer;
+}
+
+.buttonRed {
+  background-color: rgb(184, 3, 3);
+  border: none;
+  font-size: 13px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.buttonRed:hover {
   cursor: pointer;
 }

@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 //Pages :
 import Home from "./pages/Home";
@@ -14,15 +16,32 @@ import Footer from "./components/Footer/Footer.jsx";
 import ScrollToTop from "./components/Tools/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
+  const [token, setToken] = useState(Cookies.get("vinted-token") || null);
+
+  const connexionStatus = (token) => {
+    if (token) {
+      Cookies.set("vinted-token", token, { expires: 14 });
+    } else {
+      Cookies.remove("vinted-token");
+    }
+    setToken(token);
+  };
+
   return (
     <Router>
       <ScrollToTop />
-      <Header />
+      <Header token={token} connexionStatus={connexionStatus} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Product />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/signup"
+          element={<Signup connexionStatus={connexionStatus} />}
+        />
+        <Route
+          path="/login"
+          element={<Login connexionStatus={connexionStatus} />}
+        />
         <Route path="*" element={<All />} />
       </Routes>
       <Footer />

@@ -4,8 +4,9 @@ import { IoSearch } from "react-icons/io5";
 import ButtonGreen from "../Tools/Buttons/ButtonGreen.jsx";
 import ButtonLight from "../Tools/Buttons/ButtonLight.jsx";
 import { Link } from "react-router-dom";
+import { IoIosLogOut } from "react-icons/io";
 
-const Header = () => {
+const Header = ({ token, connexionStatus }) => {
   return (
     <>
       <header>
@@ -22,14 +23,28 @@ const Header = () => {
               ></input>
             </div>
             <div className="action">
-              <div className="buttonLightWrap">
-                <Link to="/signup">
-                  <ButtonLight title="S'inscrire" />
-                </Link>
-                <Link to="/login">
-                  <ButtonLight title="Se connecter" />
-                </Link>
-              </div>
+              {token ? (
+                <>
+                  <button
+                    className="buttonRed"
+                    onClick={() => {
+                      connexionStatus(null);
+                    }}
+                  >
+                    <IoIosLogOut className="logOut" />
+                    Se déconnecter
+                  </button>
+                </>
+              ) : (
+                <div className="buttonLightWrap">
+                  <Link to="/signup">
+                    <ButtonLight title="S'inscrire" />
+                  </Link>
+                  <Link to="/login">
+                    <ButtonLight title="Se connecter" />
+                  </Link>
+                </div>
+              )}
 
               <ButtonGreen title="Vends tes articles" size="small" />
             </div>
