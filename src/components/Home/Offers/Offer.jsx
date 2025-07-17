@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import "./Offer.css";
 import User from "../../Tools/User/User";
 import Loader from "../../Tools/Loader/Loader";
+import SwitchTri from "../../Tools/SwitchTri/SwitchTri.jsx";
 
 const Offer = ({ search }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
+  const [sort, setSort] = useState("");
   const limit = 10;
 
   console.log(search);
@@ -19,7 +21,7 @@ const Offer = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}&sort=${sort}`
         );
         // console.log(response);
         // console.log(response.data.offers);
@@ -31,7 +33,7 @@ const Offer = ({ search }) => {
       }
     };
     fetchData();
-  }, [page, search]);
+  }, [page, search, sort]);
 
   const totalPages = Math.ceil(totalCount / limit);
 
@@ -41,6 +43,13 @@ const Offer = ({ search }) => {
     </section>
   ) : (
     <>
+      <div className="container">
+        <section className="filtersWrap">
+          <div className="filters">
+            <SwitchTri sort={sort} setSort={setSort} />
+          </div>
+        </section>
+      </div>
       <section className="offersWrap">
         <div className="container">
           <div className="offersWrap2">
