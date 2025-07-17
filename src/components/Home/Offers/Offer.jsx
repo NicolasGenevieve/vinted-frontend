@@ -6,6 +6,7 @@ import "./Offer.css";
 import User from "../../Tools/User/User";
 import Loader from "../../Tools/Loader/Loader";
 import SwitchTri from "../../Tools/SwitchTri/SwitchTri.jsx";
+import SlideTri from "../../Tools/SwitchTri/SlideTri.jsx";
 
 const Offer = ({ search }) => {
   const [data, setData] = useState([]);
@@ -13,15 +14,23 @@ const Offer = ({ search }) => {
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [sort, setSort] = useState("");
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(500);
+  const [priceRange, setPriceRange] = useState([priceMin, priceMax]);
   const limit = 10;
 
-  console.log(search);
+  // console.log(search);
+
+  useEffect(() => {
+    setPriceMin(priceRange[0]);
+    setPriceMax(priceRange[1]);
+  }, [priceRange]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}&sort=${sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}&sort=${sort}&priceMin=${priceMin}&priceMax=${priceMax}`
         );
         // console.log(response);
         // console.log(response.data.offers);
@@ -33,7 +42,7 @@ const Offer = ({ search }) => {
       }
     };
     fetchData();
-  }, [page, search, sort]);
+  }, [page, search, sort, priceMin, priceMax]);
 
   const totalPages = Math.ceil(totalCount / limit);
 
@@ -46,7 +55,13 @@ const Offer = ({ search }) => {
       <div className="container">
         <section className="filtersWrap">
           <div className="filters">
-            <SwitchTri sort={sort} setSort={setSort} />
+            <h4>Filtrer par prix :</h4>
+            <div className="sort">
+              <SwitchTri sort={sort} setSort={setSort} />
+            </div>
+            <div className="minmax">
+              <SlideTri priceRange={priceRange} setPriceRange={setPriceRange} />
+            </div>
           </div>
         </section>
       </div>

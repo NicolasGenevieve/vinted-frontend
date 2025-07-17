@@ -72,7 +72,7 @@
 }
 
 .filtersWrap {
-  border: solid orange 3px;
+  /* border: solid orange 3px; */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -80,7 +80,28 @@
 }
 
 .filters {
-  border: solid 3px black;
+  /*  border: red 3px solid; */
+  display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort {
+  /*border: solid 3px black;*/
+  color: #007782;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.minmax {
+  /* border: solid 3px black;*/
+  color: #007782;
+  width: 30%;
+}
+
+h4 {
+  font-weight: bold;
   color: #007782;
 }
