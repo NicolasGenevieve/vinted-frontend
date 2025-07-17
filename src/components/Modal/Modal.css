@@ -1,0 +1,30 @@
+.modal-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px 50px;
+  position: relative;
+  z-index: 1001;
+  border-radius: 10px;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 24px;
+}

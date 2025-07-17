@@ -1,7 +1,11 @@
 import "./ButtonLight.css";
 
-const ButtonLight = ({ title }) => {
-  return <button className="buttonLight">{title}</button>;
+const ButtonLight = ({ title, onClick }) => {
+  return (
+    <button className="buttonLight" onClick={onClick}>
+      {title}
+    </button>
+  );
 };
 
 export default ButtonLight;

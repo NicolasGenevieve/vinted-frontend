@@ -14,10 +14,13 @@ import All from "./pages/All.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ScrollToTop from "./components/Tools/ScrollToTop/ScrollToTop.jsx";
+import Modal from "./components/Modal/Modal.jsx";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("vinted-token") || null);
   const [search, setSearch] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [modalType, setModalType] = useState("");
 
   const connexionStatus = (token) => {
     if (token) {
@@ -36,6 +39,8 @@ function App() {
         connexionStatus={connexionStatus}
         search={search}
         setSearch={setSearch}
+        setVisible={setVisible}
+        setModalType={setModalType}
       />
       <Routes>
         <Route path="/" element={<Home search={search} />} />
@@ -51,6 +56,16 @@ function App() {
         <Route path="*" element={<All />} />
       </Routes>
       <Footer />
+      {visible && (
+        <Modal setVisible={setVisible}>
+          {modalType === "login" && (
+            <Login connexionStatus={connexionStatus} setVisible={setVisible} />
+          )}
+          {modalType === "signup" && (
+            <Signup connexionStatus={connexionStatus} setVisible={setVisible} />
+          )}
+        </Modal>
+      )}
     </Router>
   );
 }

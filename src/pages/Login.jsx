@@ -7,7 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ connexionStatus }) => {
+const Login = ({ connexionStatus, setVisible }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,7 +25,11 @@ const Login = ({ connexionStatus }) => {
       const token = response.data.token;
       if (token) {
         connexionStatus(token);
-        navigate("/");
+        if (setVisible) {
+          setVisible(false);
+        } else {
+          navigate("/");
+        }
       }
     } catch (error) {
       console.log(error.response.data.message);

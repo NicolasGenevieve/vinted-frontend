@@ -6,7 +6,14 @@ import ButtonLight from "../Tools/Buttons/ButtonLight.jsx";
 import { Link } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 
-const Header = ({ token, connexionStatus, search, setSearch }) => {
+const Header = ({
+  token,
+  connexionStatus,
+  search,
+  setSearch,
+  setVisible,
+  setModalType,
+}) => {
   return (
     <>
       <header>
@@ -42,12 +49,21 @@ const Header = ({ token, connexionStatus, search, setSearch }) => {
                 </>
               ) : (
                 <div className="buttonLightWrap">
-                  <Link to="/signup">
-                    <ButtonLight title="S'inscrire" />
-                  </Link>
-                  <Link to="/login">
-                    <ButtonLight title="Se connecter" />
-                  </Link>
+                  <ButtonLight
+                    title="S'inscrire"
+                    onClick={() => {
+                      setModalType("signup");
+                      setVisible(true);
+                    }}
+                  />
+
+                  <ButtonLight
+                    title="Se connecter"
+                    onClick={() => {
+                      setModalType("login");
+                      setVisible(true);
+                    }}
+                  />
                 </div>
               )}
 
