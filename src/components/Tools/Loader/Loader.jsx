@@ -4,7 +4,7 @@ import { BarLoader } from "react-spinners";
 const Loader = () => {
   return (
     <div className="loadWrap">
-      <BarLoader />
+      <BarLoader color="#007782" />
     </div>
   );
 };

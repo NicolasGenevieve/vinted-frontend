@@ -1,12 +1,12 @@
 import Hero from "../components/Home/Hero/Hero.jsx";
-import Offers from "../components/Home/Offers/Offers.jsx";
+import Offer from "../components/Home/Offers/Offer.jsx";
 
 const Home = () => {
   return (
     <main>
       {/* {console.log(product)} */}
       <Hero />
-      <Offers />
+      <Offer />
     </main>
   );
 };
