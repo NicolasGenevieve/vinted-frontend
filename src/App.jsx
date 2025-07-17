@@ -17,6 +17,7 @@ import ScrollToTop from "./components/Tools/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("vinted-token") || null);
+  const [search, setSearch] = useState("");
 
   const connexionStatus = (token) => {
     if (token) {
@@ -30,9 +31,14 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Header token={token} connexionStatus={connexionStatus} />
+      <Header
+        token={token}
+        connexionStatus={connexionStatus}
+        search={search}
+        setSearch={setSearch}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home search={search} />} />
         <Route path="/offer/:id" element={<Product />} />
         <Route
           path="/signup"

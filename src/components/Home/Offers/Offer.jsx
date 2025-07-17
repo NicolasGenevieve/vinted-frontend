@@ -6,18 +6,20 @@ import "./Offer.css";
 import User from "../../Tools/User/User";
 import Loader from "../../Tools/Loader/Loader";
 
-const Offer = () => {
+const Offer = ({ search }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const limit = 10;
 
+  console.log(search);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}`
         );
         // console.log(response);
         // console.log(response.data.offers);
@@ -29,7 +31,7 @@ const Offer = () => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, search]);
 
   const totalPages = Math.ceil(totalCount / limit);
 

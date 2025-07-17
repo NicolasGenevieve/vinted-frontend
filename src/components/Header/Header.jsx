@@ -6,7 +6,7 @@ import ButtonLight from "../Tools/Buttons/ButtonLight.jsx";
 import { Link } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 
-const Header = ({ token, connexionStatus }) => {
+const Header = ({ token, connexionStatus, search, setSearch }) => {
   return (
     <>
       <header>
@@ -18,8 +18,13 @@ const Header = ({ token, connexionStatus }) => {
                 <IoSearch />
               </div>
               <input
+                type="text"
                 className="inputSearch"
                 placeholder="Rechercher des articles..."
+                value={search}
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
               ></input>
             </div>
             <div className="action">
