@@ -6,10 +6,13 @@ import ButtonGreen from "../components/Tools/Buttons/ButtonGreen";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Tools/Loader/Loader";
 import displayPrice from "../utils/displayPrice";
+import { useNavigate } from "react-router-dom";
 
-const Product = () => {
+const Product = ({ token, setModalType, setVisible, setRedirectPath }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -64,7 +67,24 @@ const Product = () => {
               <h1>{data.product_name}</h1>
               <p className="description">{data.product_description}</p>
               <User user={data.owner} />
-              <ButtonGreen title="Acheter" size="medium" />
+              <ButtonGreen
+                title="Acheter"
+                size="medium"
+                onClick={() => {
+                  if (token) {
+                    navigate("/payment", {
+                      state: {
+                        title: data.product_name,
+                        price: data.product_price,
+                      },
+                    });
+                  } else {
+                    setModalType("login");
+                    setVisible(true);
+                    setRedirectPath("/payment");
+                  }
+                }}
+              />
             </div>
           </div>
         </div>

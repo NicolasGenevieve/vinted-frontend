@@ -10,6 +10,7 @@ import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx";
 import All from "./pages/All.jsx";
 import Publish from "./pages/Publish.jsx";
+import Payment from "./pages/Payment.jsx";
 
 //Components :
 import Header from "./components/Header/Header.jsx";
@@ -58,7 +59,17 @@ function App() {
             />
           }
         />
-        <Route path="/offer/:id" element={<Product />} />
+        <Route
+          path="/offer/:id"
+          element={
+            <Product
+              token={token}
+              setModalType={setModalType}
+              setVisible={setVisible}
+              setRedirectPath={setRedirectPath}
+            />
+          }
+        />
         <Route
           path="/signup"
           element={<Signup connexionStatus={connexionStatus} />}
@@ -68,6 +79,7 @@ function App() {
           element={<Login connexionStatus={connexionStatus} />}
         />
         <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment token={token} />} />
         <Route path="*" element={<All />} />
       </Routes>
       <Footer />

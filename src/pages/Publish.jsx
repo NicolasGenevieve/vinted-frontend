@@ -72,6 +72,7 @@ const Publish = ({ token }) => {
           "Une photo de l'article avec au moins son titre et son prix est requis"
         );
       }
+      setIsClicking(false);
     }
   };
 
