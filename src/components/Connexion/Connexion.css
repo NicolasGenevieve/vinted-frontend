@@ -43,3 +43,7 @@
   padding: 20px;
   color: #007782;
 }
+
+.account:hover {
+  cursor: pointer;
+}

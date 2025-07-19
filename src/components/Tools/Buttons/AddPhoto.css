@@ -1,0 +1,21 @@
+.labelPhoto {
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  border: solid 3px #007782;
+  padding: 10px;
+  border-radius: 10px;
+  color: #007782;
+}
+
+.labelPhoto:hover {
+  cursor: pointer;
+  border: solid 3px #73a3a8;
+}
+
+.FaRegPlusSquare {
+  font-size: 20px;
+}

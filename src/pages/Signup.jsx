@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const Signup = ({ connexionStatus, setVisible }) => {
+const Signup = ({ connexionStatus, setVisible, setModalType }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,7 +56,7 @@ const Signup = ({ connexionStatus, setVisible }) => {
 
   return (
     <div className="connectWrap">
-      <form onSubmit={handleSubmit}>
+      <form className="formConnexion" onSubmit={handleSubmit}>
         <p className="title">S'inscrire</p>
         <Input
           className="inputConnect"
@@ -114,9 +114,15 @@ const Signup = ({ connexionStatus, setVisible }) => {
         <div className="buttonWrap">
           <ButtonGreen title="S'inscrire" size="medium" />
         </div>
-        <Link to="/login">
-          <p className="account">Tu as déjà un compte ? Connecte-toi !</p>
-        </Link>
+        <p
+          className="account"
+          onClick={() => {
+            setModalType("login");
+            setVisible(true);
+          }}
+        >
+          Tu as déjà un compte ? Connecte-toi !
+        </p>
       </form>
     </div>
   );

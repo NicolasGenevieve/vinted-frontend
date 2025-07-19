@@ -1,0 +1,103 @@
+.productWrap {
+  background-color: #ebedee;
+  padding: 50px;
+}
+
+.publish {
+  width: 100%;
+}
+
+.titlePublish {
+  margin-bottom: 30px;
+}
+
+.formPublish {
+  /* border: red 3px solid; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 0;
+  gap: 20px;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*border: blue 3px solid;*/
+  width: 100%;
+  padding: 30px 0;
+  background-color: white;
+  gap: 15px;
+}
+
+.picturePreview {
+  width: 500px;
+  height: 250px;
+  position: relative;
+}
+
+.picturePreview img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.cross {
+  font-size: 25px;
+  color: red;
+  cursor: pointer;
+}
+
+.inputPublish {
+  padding: 10px;
+  width: 70%;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #fcf9f9;
+  border: solid 1px #d3d3d3;
+}
+
+.inputPublish:focus {
+  outline: none;
+}
+
+.aeraPublish {
+  padding: 10px;
+  width: 70%;
+  height: 90px;
+  border-radius: 5px;
+  background-color: #fcf9f9;
+  border: solid 1px #d3d3d3;
+}
+
+.aeraPublish:focus {
+  outline: none;
+}
+
+.productInfo {
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-end;
+  /* border: orange 1px solid;*/
+  width: 30%;
+}
+
+.inputWrap {
+  display: flex;
+  /* border: black solid 3px;*/
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  width: 800px;
+  justify-content: space-between;
+}

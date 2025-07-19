@@ -7,7 +7,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ connexionStatus, setVisible }) => {
+const Login = ({
+  connexionStatus,
+  setVisible,
+  setModalType,
+  redirectPath,
+  setRedirectPath,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -27,6 +33,10 @@ const Login = ({ connexionStatus, setVisible }) => {
         connexionStatus(token);
         if (setVisible) {
           setVisible(false);
+        }
+        if (redirectPath) {
+          navigate(redirectPath);
+          setRedirectPath(null);
         } else {
           navigate("/");
         }
@@ -46,7 +56,7 @@ const Login = ({ connexionStatus, setVisible }) => {
 
   return (
     <div className="connectWrap">
-      <form onSubmit={handleSubmit}>
+      <form className="formConnexion" onSubmit={handleSubmit}>
         <p className="title">Se connecter</p>
 
         <Input
@@ -74,9 +84,15 @@ const Login = ({ connexionStatus, setVisible }) => {
         {error ? <p className="error">{error}</p> : <></>}
         <ButtonGreen title="Se connecter" size="medium" />
 
-        <Link to="/login">
-          <p className="account">Pas encore de compte ? Inscris-toi !</p>
-        </Link>
+        <p
+          className="account"
+          onClick={() => {
+            setModalType("signup");
+            setVisible(true);
+          }}
+        >
+          Pas encore de compte ? Inscris-toi !
+        </p>
       </form>
     </div>
   );

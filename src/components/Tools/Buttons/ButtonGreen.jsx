@@ -1,7 +1,11 @@
 import "./ButtonGreen.css";
 
-const ButtonGreen = ({ title, size }) => {
-  return <button className={size}>{title}</button>;
+const ButtonGreen = ({ title, size, onClick, disabled }) => {
+  return (
+    <button className={size} onClick={onClick} disabled={disabled}>
+      {title}
+    </button>
+  );
 };
 
 export default ButtonGreen;

@@ -3,7 +3,7 @@ import Brand from "./Brand.jsx";
 import { IoSearch } from "react-icons/io5";
 import ButtonGreen from "../Tools/Buttons/ButtonGreen.jsx";
 import ButtonLight from "../Tools/Buttons/ButtonLight.jsx";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 
 const Header = ({
@@ -13,7 +13,10 @@ const Header = ({
   setSearch,
   setVisible,
   setModalType,
+  setRedirectPath,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <header>
@@ -67,7 +70,19 @@ const Header = ({
                 </div>
               )}
 
-              <ButtonGreen title="Vends tes articles" size="small" />
+              <ButtonGreen
+                title="Vends tes articles"
+                size="small"
+                onClick={() => {
+                  if (token) {
+                    navigate("/publish");
+                  } else {
+                    setModalType("login");
+                    setVisible(true);
+                    setRedirectPath("/publish");
+                  }
+                }}
+              />
             </div>
           </section>
         </div>
